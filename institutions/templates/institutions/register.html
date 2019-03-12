@@ -1,0 +1,20 @@
+{% extends "u15/base.html" %}
+{% block content %}
+    <div class="content-section">
+        <form methood="Post">
+            {% csrf_token %}
+            <feildset class="form-group">
+                <legend class="border-bottom mb-4">Join Today</legend>
+                {{ form.as_p }}
+            </feildset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Sign Up</button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Already have an account? <a class="ml-2" href="#">Sign In></a>
+            </small>
+        </div>
+    </div>
+{% endblock content%}

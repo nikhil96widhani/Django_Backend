@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'u15.apps.U15Config',
+    'institutions.apps.InstitutionsConfig'
 ]
 
 MIDDLEWARE = [
