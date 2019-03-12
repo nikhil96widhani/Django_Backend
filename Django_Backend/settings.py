@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'u15.apps.U15Config',
-    'institutions.apps.InstitutionsConfig'
+    'institutions.apps.InstitutionsConfig',
+    'crispy_forms',
+
 ]
 
 MIDDLEWARE = [
@@ -121,3 +123,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+LOGIN_REDIRECT_URL = 'u15-home'
+LOGIN_URL = 'login'
