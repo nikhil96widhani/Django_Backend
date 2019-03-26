@@ -11,4 +11,25 @@ class Profile(models.Model):
         return f'{self.user.username} Profile'
 
     def save(self, *args, **kawrgs):
-        super()save(*args, **kawrgs)
+        super().save(*args, **kawrgs)
+
+class Organization(models.Model):
+    name_en = models.TextField()
+    name_fr = models.TextField()
+    street_address = models.TextField()
+    city = models.TextField()
+    province = models.TextField()
+    postal_code = models.TextField()
+    country = models.TextField()
+    website_url = models.TextField()
+    main_telephone = models.TextField()
+    logo_path = models.TextField()
+    is_research_funder = models.BooleanField(max_length=100)
+    is_research_org = models.BooleanField(max_length=100)
+    is_business = models.BooleanField(max_length=100)
+    is_non_profit = models.BooleanField(max_length=100)
+    is_govt = models.BooleanField(max_length=100)
+
+    class Meta:
+        managed = False
+        db_table = 'organization'

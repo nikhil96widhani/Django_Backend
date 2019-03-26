@@ -12,5 +12,10 @@
             <p class="article-content">{{ post.content }}</p>
           </div>
         </article>
+        <div>
+            {% for Organization in Organization %}
+                <p>city = {{ Organization.city }}</p>
+            {% endfor %}
+        </div>
     {% endfor %}
 {% endblock content%}
