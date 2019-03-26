@@ -24,6 +24,9 @@ class Organization(models.Model):
     website_url = models.TextField()
     main_telephone = models.TextField()
     logo_path = models.TextField()
+    ilo_contact = models.TextField()
+    tto_contact = models.TextField()
+    media_contact = models.TextField()
     is_research_funder = models.BooleanField(max_length=100)
     is_research_org = models.BooleanField(max_length=100)
     is_business = models.BooleanField(max_length=100)
@@ -33,3 +36,14 @@ class Organization(models.Model):
     class Meta:
         managed = False
         db_table = 'organization'
+
+    def __str__(self):
+        return self.name_en
+
+class BaseOrganization(models.Model):
+    name = models.TextField()
+    org = models.ForeignKey('Organization', models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'base_organization'
