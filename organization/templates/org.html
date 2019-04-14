@@ -1,0 +1,10 @@
+{% extends "u15/base.html" %}
+{% block content %}
+    {% for organization in organizations %}
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ organization.name_en }}</a>
+            </div>
+          </div>
+    {% endfor %}
+{% endblock content%}

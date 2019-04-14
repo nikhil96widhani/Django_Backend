@@ -1,49 +1,27 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from organization.models import Organization
 
 class Profile(models.Model):
+    ADMIN = 1
+    STAFF = 2
+    INSTITUTION_ADMIN = 3
+    INSTITUTION_TTO = 4
+    ROLE_CHOICES = (
+        (ADMIN, 'Admin'),
+        (STAFF, 'Staff'),
+        (INSTITUTION_ADMIN, 'Institution Admin'),
+        (INSTITUTION_TTO, 'Institution TTO'),
+    )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
     bio = models.TextField(max_length=500, blank=True)
+    role = models.PositiveSmallIntegerField(choices=ROLE_CHOICES, null=True, blank=True)
+    org_key = models.ForeignKey(Organization, default=1, on_delete=models.DO_NOTHING)
+
 
     def __str__(self):
         return f'{self.user.username} Profile'
 
     def save(self, *args, **kawrgs):
         super().save(*args, **kawrgs)
-
-class Organization(models.Model):
-    name_en = models.TextField()
-    name_fr = models.TextField()
-    street_address = models.TextField()
-    city = models.TextField()
-    province = models.TextField()
-    postal_code = models.TextField()
-    country = models.TextField()
-    website_url = models.TextField()
-    main_telephone = models.TextField()
-    logo_path = models.TextField()
-    ilo_contact = models.TextField()
-    tto_contact = models.TextField()
-    media_contact = models.TextField()
-    is_research_funder = models.BooleanField(max_length=100)
-    is_research_org = models.BooleanField(max_length=100)
-    is_business = models.BooleanField(max_length=100)
-    is_non_profit = models.BooleanField(max_length=100)
-    is_govt = models.BooleanField(max_length=100)
-
-    class Meta:
-        managed = False
-        db_table = 'organization'
-
-    def __str__(self):
-        return self.name_en
-
-class BaseOrganization(models.Model):
-    name = models.TextField()
-    org = models.ForeignKey('Organization', models.DO_NOTHING)
-
-    class Meta:
-        managed = False
-        db_table = 'base_organization'

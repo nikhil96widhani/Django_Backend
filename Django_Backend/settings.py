@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'u15.apps.U15Config',
     'institutions.apps.InstitutionsConfig',
     'crispy_forms',
+    'organization.apps.OrganizationConfig',
 
 ]
 

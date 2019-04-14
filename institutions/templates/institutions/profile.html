@@ -8,6 +8,8 @@
             <h2 class="account-heading">{{ user.username }}</h2>
             <p class="text-secondary">{{ user.email }}</p>
             <p class="text-secondary">{{ user.profile.bio }}</p>
+            <p class="text-secondary">{{ user.profile.role }}</p>
+            <p class="text-secondary">{{ user.profile.org_key.name_en }}</p>
         </div>
       </div>
       <form method="POST" enctype="'multipart/form-data">
